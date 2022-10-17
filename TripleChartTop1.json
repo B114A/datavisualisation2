@@ -1,0 +1,45 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stock prices of four large companies as a small multiples of area charts.",
+  "transform": [{"filter": "datum.Area"}],
+  "width": 600,
+  "height":80,
+  "data": {
+    "url": "https://raw.githubusercontent.com/B114A/datvis2data/main/Top1.csv"
+  },
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "title": "Year",
+      "axis": {"grid": false}
+    },
+    "y": {
+      "field": "Value_Tonnes",
+      "type": "quantitative",
+      "title": "Value",
+      "axis": {"grid": false}
+    },
+    "color": {
+      "field": "Item",
+      "type": "ordinal",
+      "scale": {
+        "domain": ["Apples", "Bananas", "Oranges"],
+        "range": ["#71816B", "#FFC107", "#94CDCF"]
+      },
+      "title": "Fruits"
+    },
+    "row": {"field": "Area", "type": "nominal", "title": "Countries"},
+    "tooltip": [
+      {"field": "Year", "timeUnit": "year", "type": "ordinal", "title": "Year"},
+      {
+        "field": "Value_Tonnes",
+        "type": "quantitative",
+        "title": "Value (Tonnes)"
+      },
+      {"field": "Item", "type": "ordinal"}
+    ]
+  },
+  "config": {}
+}

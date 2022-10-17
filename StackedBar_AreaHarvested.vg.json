@@ -1,0 +1,39 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/B114A/datvis2data/main/FAOSTAT_Area_Harvested.csv"
+  },
+  "width": 650,
+  "height": 300,
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "timeUnit": "year",
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year"
+    },
+    "y": {"field": "Area_ha", "aggregate": "sum", "type": "quantitative", "title": "Area (ha)"},
+    "color": {
+      "field": "Item",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Apples", "Bananas", "Oranges"],
+        "range": ["#71816B", "#FFC107", "#94CDCF"]
+      },
+      "title": "Fruits"
+    },
+    "tooltip": [
+      {"field": "Year", "timeUnit": "year", "type": "ordinal", "title": "Year"},
+      {
+        "field": "Area_ha",
+        "type": "quantitative",
+        "aggregate": "sum",
+        "title": "Area (ha)"
+      },
+      {"field": "Item", "type": "ordinal"}
+    ]
+
+  },
+  "config": {}
+}

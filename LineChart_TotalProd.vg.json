@@ -1,0 +1,47 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/B114A/datvis2data/main/FAOSTAT_data_Production.csv"
+  },
+  "mark": {"type": "line", "point": true},
+  "width": 650,
+  "height": 300,
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "scale": {
+        "domain": [
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020"
+        ]
+      },
+      "axis": {"title": "Year", "tickCount": 10},
+      "type": "ordinal"
+    },
+    "y": {"field": "Value_Tonnes", "aggregate": "sum", "type": "quantitative", "title": "Value (Tonnes)"},
+    "color": {
+      "field": "Item",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Apples", "Bananas", "Oranges"],
+        "range": ["#71816B", "#FFC107", "#94CDCF"]
+      },
+      "title": "Fruits"
+    },
+    "tooltip": [
+      {"field": "Year", "type": "ordinal", "title": "Year"},
+      {"field": "Value_Tonnes", "aggregate": "sum", "type": "quantitative", "title":"Value (Tonnes)"},
+      {"field": "Item", "type": "ordinal"}
+    ]
+  },
+  "config": {}
+}
